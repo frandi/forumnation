@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/forum/service/category.service';
+import { Category } from 'src/app/forum/models/category';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftSidebarComponent implements OnInit {
 
-  constructor() { }
+  categories: Category[]
+
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.categoryService.getCategories().subscribe(data => {
+      this.categories = data
+    }, error => {
+      console.log(`Error getting categories: ${error}`);
+    })
   }
 
 }

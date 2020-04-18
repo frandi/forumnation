@@ -6,32 +6,11 @@
                 <fa-icon [icon]="['fas', 'comments']"></fa-icon> All Discussion
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngFor="let cat of categories">
             <a href="#" class="nav-link">
-                <fa-icon [icon]="['fas', 'bullhorn']"></fa-icon> Announcement
+                <fa-icon [icon]="['fas', cat.displayIcon]"></fa-icon> {{cat.displayName}}
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="['fas', 'wrench']"></fa-icon> Support
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon> Feedback
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="['fas', 'wrench']"></fa-icon> Support2
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon> Feedback2
-            </a>
-        </li>
-        <li></li>
     </ul>
     <hr>
     <div class="text-center"><small>v1.0.0</small></div>
