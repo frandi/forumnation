@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class CategoryService {
+	API_URL: string = 'http://localhost:8080/api/';
 
-  constructor() { }
+	constructor(private httpClient: HttpClient) {}
 
-  getCategories(): Observable<Category[]> {
-    return new Observable<Category[]>(observer => {
-      var categories = [
-        { name: 'announcement', displayName: 'Announcement', displayIcon: 'bullhorn' } as Category,
-        { name: 'support', displayName: 'Support', displayIcon: 'wrench' } as Category,
-        { name: 'feedback', displayName: 'Feedback', displayIcon: 'comment-dots' } as Category,
-      ]
-
-      observer.next(categories)
-      observer.complete();
-    })
-  }
+	getCategories(): Observable<Category[]> {
+		return this.httpClient.get<Category[]>(this.API_URL + 'categories');
+	}
 }
