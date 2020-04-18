@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col col-md-8 pl-md-4">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <fa-icon [icon]="['fas', 'search']"></fa-icon>
+                </div>
+            </div>
+            <input type="search" class="form-control" placeholder="search for keywords">
+        </div>
+    </div>
+    <div class="col col-md-4 pr-md-4">
+        <select class="custom-select">
+            <option selected value="top">Top</option>
+            <option value="latest">Latest</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col">
+        <app-post-list [search]="search"></app-post-list>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="list-group">
+            <a href="#" class="list-group-item-action p-2 mt-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small><fa-icon [icon]="['fas', 'calendar']"></fa-icon> a week ago</small>
+                <small class="ml-3"><fa-icon [icon]="['fas', 'comment']"></fa-icon> 30</small>
+            </a>
+            <a href="#" class="list-group-item-action p-2 mt-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small><fa-icon [icon]="['fas', 'calendar']"></fa-icon> a week ago</small>
+                <small class="ml-3"><fa-icon [icon]="['fas', 'comment']"></fa-icon> 30</small>
+            </a>
+            <a href="#" class="list-group-item-action p-2 mt-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small><fa-icon [icon]="['fas', 'calendar']"></fa-icon> a week ago</small>
+                <small class="ml-3"><fa-icon [icon]="['fas', 'comment']"></fa-icon> 30</small>
+            </a>
+            <a href="#" class="list-group-item-action p-2 mt-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small><fa-icon [icon]="['fas', 'calendar']"></fa-icon> a week ago</small>
+                <small class="ml-3"><fa-icon [icon]="['fas', 'comment']"></fa-icon> 30</small>
+            </a>
+            <a href="#" class="list-group-item-action p-2 mt-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small><fa-icon [icon]="['fas', 'calendar']"></fa-icon> a week ago</small>
+                <small class="ml-3"><fa-icon [icon]="['fas', 'comment']"></fa-icon> 30</small>
+            </a>
+        </div>
+    </div>
+</div>
