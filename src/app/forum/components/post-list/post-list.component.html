@@ -1,1 +1,33 @@
-<p>Search string: {{searchString}}</p>
+<div class="row">
+    <div class="col col-lg-8 pl-lg-4">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <fa-icon [icon]="['fas', 'search']"></fa-icon>
+                </div>
+            </div>
+            <input type="search" class="form-control" placeholder="search for keywords">
+        </div>
+    </div>
+    <div class="col col-lg-4 pr-lg-4">
+        <select class="custom-select">
+            <option selected value="top">Top</option>
+            <option value="latest">Latest</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mt-lg-3">
+    <div class="col">
+        <div class="list-group">
+            <a href="#" class="list-group-item-action p-lg-4 mt-lg-2" *ngFor="let post of posts">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{post.title}}</h5>
+                </div>
+                <p class="mb-1">{{post.content}}</p>
+                <small><fa-icon [icon]="['fas', 'calendar']"></fa-icon> a week ago</small>
+                <small class="ml-3"><fa-icon [icon]="['fas', 'comment']"></fa-icon> 30</small>
+            </a>
+        </div>
+    </div>
+</div>

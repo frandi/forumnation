@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchParams } from '../../models/search-params';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../models/post';
 
 @Component({
   selector: 'app-post-list',
@@ -13,10 +15,18 @@ export class PostListComponent implements OnInit {
   @Input('search')
   searchParams: SearchParams
 
-  constructor() { }
+  posts: Post[]
+
+  constructor(private postService : PostService) { }
 
   ngOnInit(): void {
-    this.searchString = JSON.stringify(this.searchParams)
+    console.log(`search params: ${JSON.stringify(this.searchParams)}`) 
+
+    this.postService.getPostsBySearchParams(this.searchParams).subscribe(data => {
+      this.posts = data
+    }, error => {
+      console.log(`Failed to get post collection. Error: ${error}`)
+    })
   }
 
 }
