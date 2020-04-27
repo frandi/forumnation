@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-response-list',
+  selector: 'forum-response-list',
   templateUrl: './response-list.component.html',
   styleUrls: ['./response-list.component.css']
 })

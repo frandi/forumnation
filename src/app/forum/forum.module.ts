@@ -14,7 +14,8 @@ import { faCalendar, faComment, faSearch } from '@fortawesome/free-solid-svg-ico
     FontAwesomeModule
   ],
   exports: [
-    PostListComponent
+    PostListComponent,
+    PostItemComponent
   ]
 })
 export class ForumModule { 

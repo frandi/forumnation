@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchParams } from '../forum/models/search-params'
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,40 +15,27 @@ export class HomeComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.search = {
-      type: 'keywprd',
-      value: 'anything'
-    } as SearchParams
-  }
+    
+    this.route.queryParamMap.subscribe(paramMap => {
+      const paramLength = paramMap.keys.length
 
-  getSearchParams(): SearchParams {
-    var searchParams = {} as SearchParams
+      var parent = {} as SearchParams
+      var index = 0
+      paramMap.keys.reverse().forEach(key => {
+        let current = parent
+        current.type = key
+        current.value = paramMap.get(key)
 
-    var paramMap = this.route.snapshot.paramMap
-    paramMap.keys.forEach(key => {
-      var parentParam = searchParams
-      var param = {type: key, value: paramMap.get(key)} as SearchParams
+        let hasParent = paramLength > index + 1
+        if (hasParent) {
+            parent = { nextParams: current } as SearchParams
+        }
 
-      if (parentParam) {
-        parentParam.nextParams = param
-      } else {
-        searchParams = param
-      }
+        index++
+      })
+
+      this.search = parent
     })
-
-    var parent: SearchParams
-    for (let index = paramMap.keys.length - 1; index >= 0; index--) {
-      const type = paramMap.keys[index]
-      const value = paramMap.get(type)
-      const param = { type, value } as SearchParams
-
-      if (index > 0) {
-        parent = {nextParams: param} as SearchParams
-      }
-
-    }
-
-    return searchParams
   }
 
 }

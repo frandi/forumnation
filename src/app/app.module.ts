@@ -13,9 +13,10 @@ import { ForumModule } from './forum/forum.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './data/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
-	declarations: [ AppComponent, HomeComponent ],
+	declarations: [ AppComponent, HomeComponent, ItemComponent ],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
