@@ -20,7 +20,8 @@ export class PostService extends BaseService {
 
   getPostsBySearchParams(searchParams: SearchParams): Observable<Post[]> {
     let paramsString = this.getSearchParamsString(searchParams)
-    return this.get<Post[]>(`posts`)
+    console.log(`[POST] /posts${paramsString}`)
+    return this.get<Post[]>(`posts${paramsString}`)
   }
 
   getPostById(id: number): Observable<Post>{
@@ -28,19 +29,30 @@ export class PostService extends BaseService {
   }
 
   private getSearchParamsString(searchParams: SearchParams) {
-    var paramsString : string
+    var paramsString : string = ''
 
     var params = searchParams;
     while (params) {
-      if (paramsString) {
+      if (paramsString.length > 0) {
         paramsString += '&'
       } else {
-        paramsString = ''
+        paramsString += '?'
+      }
+
+      var searchBy: string
+      switch (params.type) {
+        case 'c':
+          searchBy = 'category'
+          break;
       }
       
-      paramsString += `${params.type}=${params.value}`
+      if (searchBy !== undefined) {
+        paramsString += `${searchBy}=${params.value}`
+      }
 
       params = params.nextParams
     }
+
+    return paramsString
   }
 }

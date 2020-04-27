@@ -19,9 +19,13 @@ export class HomeComponent implements OnInit {
     this.route.queryParamMap.subscribe(paramMap => {
       const paramLength = paramMap.keys.length
 
-      var parent = {} as SearchParams
+      var parent: SearchParams
       var index = 0
       paramMap.keys.reverse().forEach(key => {
+        if (parent === undefined) {
+          parent = {} as SearchParams
+        }
+        
         let current = parent
         current.type = key
         current.value = paramMap.get(key)
