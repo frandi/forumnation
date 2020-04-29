@@ -44,9 +44,15 @@ export class PostService extends BaseService {
         case 'c':
           searchBy = 'category'
           break;
+        case 'k':
+          searchBy = 'keyword'
+          break;
       }
       
-      if (searchBy !== undefined) {
+      if (searchBy === 'keyword') {
+        paramsString += `title=${params.value}`
+      }
+      else if (searchBy !== undefined) {
         paramsString += `${searchBy}=${params.value}`
       }
 
